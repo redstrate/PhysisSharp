@@ -24,5 +24,15 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
+    - name: Build libphysis
+      run: |
+        cd libphysis
+        cargo build --features visual_data
+
+    - name: Build PhysisSharpHelpers
+      run: |
+        cd rust
+        cargo build
+
     - name: Build
       run: dotnet build
