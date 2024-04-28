@@ -14,7 +14,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        submodules: 'yes'
+        submodules: true
 
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4
