@@ -1,6 +1,6 @@
 # PhysisSharp
 
-C# bindings for Physis.
+C# bindings for [Physis](https://github.com/redstrate/Physis).
 
 ## Building
 
@@ -20,3 +20,14 @@ You can also use `LD_LIBRARY_PATH` on Linux to fool the linker.
 2. bindgen is called on the generated libphysis header. It creates a bindgen-compatible Rust file that can be used for other tools.
 3. csbindgen uses this newly created Rust file to create a C# FFI layer.
 4. PhysisSharp has a hand-written safe layer over this C# FFI that can be used by other applications.
+
+## Contributing & Support
+
+The best way you can help is by [monetarily supporting me](https://redstrate.com/fund/) or by submitting patches to
+help fix bugs or add functionality. Filing issues is appreciated, but I do this in my free time so please don't expect professional support.
+
+## License
+
+![GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)
+
+This project is licensed under the GNU General Public License 3. Some parts of the code or assets may be licensed differently.
