@@ -2,9 +2,15 @@
 
 C# bindings for Physis.
 
+## Building
+
+Due to the complex nature of the build process, I have included a helper script called `build.sh`. If you wish to build it manually, see the script as it's very simple.
+
 ## Running the example
 
-Make sure the .dll or .so file is located where you run the application. If you need to test quickly, set the `LD_LIBRARY_PATH` on Linux.
+Note that the build script nor do any of the build steps copy the .so or .dll manually. You need to make sure to have `libphysis.so`, `libPhysisSharpHelpers.so` and `libPhysisSharp.so` (replace with `.dll` on Windows) next to the executable.
+
+You can also use `LD_LIBRARY_PATH` on Linux to fool the linker.
 
 ## Process
 
