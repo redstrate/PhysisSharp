@@ -1,0 +1,3 @@
+[submodule "libphysis"]
+	path = libphysis
+	url = https://github.com/redstrate/libphysis.git
