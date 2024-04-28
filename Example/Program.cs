@@ -1,3 +1,7 @@
-﻿
-var c = new PhysisSharp.Class1();
-Console.WriteLine(c.Add(1, 2));
+﻿static class Program
+{
+    static void Main(string[] args)
+    {
+        var c = new PhysisSharp.GameData(args[0]);
+    }
+}
