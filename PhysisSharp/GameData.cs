@@ -4,7 +4,7 @@ namespace PhysisSharp;
 
 public class GameData
 {
-    private unsafe CsBindgen.GameData* _ptr;
+    private readonly unsafe CsBindgen.GameData* _ptr;
     
     public GameData(String path)
     {

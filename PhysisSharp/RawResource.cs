@@ -6,7 +6,7 @@ namespace PhysisSharp;
 
 public class RawResource
 {
-    private physis_Buffer _buffer;
+    private readonly physis_Buffer _buffer;
     
     public unsafe Span<byte> Data => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<byte>(_buffer.data), (int)_buffer.size);
     

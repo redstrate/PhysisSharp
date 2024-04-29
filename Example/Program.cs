@@ -2,9 +2,9 @@
 
 namespace Example;
 
-static class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         // Collect our arguments
         var gameDir = args[0];
@@ -17,7 +17,7 @@ static class Program
             // Create a GameData class, this manages the repositories. It allows us to easily extract files.
             gameData = new GameData(gameDir);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             Console.WriteLine($"Invalid game directory ({gameDir})!");
             return;
