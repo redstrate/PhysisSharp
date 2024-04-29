@@ -1,7 +1,47 @@
-﻿static class Program
+﻿using PhysisSharp;
+
+namespace Example;
+
+static class Program
 {
     static void Main(string[] args)
     {
-        var c = new PhysisSharp.GameData(args[0]);
+        // Collect our arguments
+        var gameDir = args[0];
+        var filePath = args[1];
+        var destinationPath = args[2];
+
+        GameData gameData;
+        try
+        {
+            // Create a GameData class, this manages the repositories. It allows us to easily extract files.
+            gameData = new GameData(gameDir);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Invalid game directory ({gameDir})!");
+            return;
+        }
+        
+        // Extract said file:
+        var file = gameData.Extract(filePath);
+        if (file == null)
+        {
+            Console.WriteLine($"File {filePath} not found!");
+            return;
+        }
+
+        try
+        {
+            // Since GameData::extract returns a byte buffer, it's trivial to write that to a file on disk.
+            File.WriteAllBytes(destinationPath, file.Data.ToArray());
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine($"Failed to write to {file} because {exception.Message}");
+            return;
+        }
+
+        Console.WriteLine($"Successfully extracted {filePath} to {destinationPath}!");
     }
 }

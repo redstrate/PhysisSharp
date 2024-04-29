@@ -4,6 +4,8 @@ namespace PhysisSharp;
 
 public class GameData
 {
+    private unsafe CsBindgen.GameData* _ptr;
+    
     public GameData(String path)
     {
         unsafe
@@ -11,11 +13,24 @@ public class GameData
             fixed (char* p = path)
             {
                 var s = HelperMethods.csharp_to_c_string((ushort*)p, path.Length);
-                var ptr = CsBindgen.NativeMethods.physis_gamedata_initialize(s);
-                Console.WriteLine((IntPtr)ptr);
+                _ptr = NativeMethods.physis_gamedata_initialize(s);
+                if (_ptr == null)
+                {
+                    throw new Exception("Invalid game directory");
+                }
+            }
+        }
+    }
 
-                var repositories = NativeMethods.physis_gamedata_get_repositories(ptr);
-                Console.WriteLine($"Read {repositories.repositories_count} repositories.");
+    public RawResource? Extract(String path)
+    {
+        unsafe
+        {
+            fixed (char* p = path)
+            {
+                var s = HelperMethods.csharp_to_c_string((ushort*)p, path.Length);
+                var buffer = NativeMethods.physis_gamedata_extract_file(_ptr, s);
+                return buffer.data == null ? null : new RawResource(buffer);
             }
         }
     }
