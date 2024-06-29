@@ -2,7 +2,7 @@
 
 # build libphysis
 cd libphysis &&
-cargo build --features visual_data &&
+cargo rustc --features visual_data --crate-type=cdylib &&
 
 # build the rust layer
 cd ../rust &&
